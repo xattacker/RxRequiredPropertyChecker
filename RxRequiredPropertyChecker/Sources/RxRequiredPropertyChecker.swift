@@ -51,6 +51,10 @@ public final class RxRequiredPropertyChecker
     private let disposeBag = DisposeBag()
     private let isFilledSubject: BehaviorSubject<Bool> = BehaviorSubject(value: false)
     
+    public init()
+    {
+    }
+    
     public func add(_ properties: RequiredProperty...)
     {
         for p in properties
