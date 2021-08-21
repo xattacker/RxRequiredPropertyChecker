@@ -11,7 +11,7 @@ import RxSwift
 import RxCocoa
 
 
-public final class RxRequiredPropertyChecker
+public final class RxRequiredPropertyChecker: ReactiveCompatible
 {
     public var count: Int
     {
@@ -34,14 +34,6 @@ public final class RxRequiredPropertyChecker
         return true
     }
     
-    public var isFilledBinding: Driver<Bool>
-    {
-        return self.isFilledSubject.asObservable()
-                    // fixed for iOS 12: done button could not chnage the background right now on iOS 12
-                    .delaySubscription(.milliseconds(100), scheduler: MainScheduler.instance)
-                    .asDriver(onErrorJustReturn: false)
-    }
-    
     public var nofilledNames: [String]
     {
         return self.properties.filter { !$0.isFilled }.map { $0.name }
@@ -49,7 +41,7 @@ public final class RxRequiredPropertyChecker
     
     private var properties = [RequiredProperty]()
     private let disposeBag = DisposeBag()
-    private let isFilledSubject: BehaviorSubject<Bool> = BehaviorSubject(value: false)
+    fileprivate let isFilledSubject: BehaviorSubject<Bool> = BehaviorSubject(value: false)
     
     public init()
     {
@@ -93,5 +85,17 @@ public final class RxRequiredPropertyChecker
     public func clear()
     {
         self.properties.removeAll()
+    }
+}
+
+
+extension Reactive where Base: RxRequiredPropertyChecker
+{
+    public var isFilled: Driver<Bool>
+    {
+        return self.base.isFilledSubject.asObservable()
+                        // fixed for iOS 12: done button could not chnage the background right now on iOS 12
+                        .delaySubscription(.milliseconds(100), scheduler: MainScheduler.instance)
+                        .asDriver(onErrorJustReturn: false)
     }
 }
