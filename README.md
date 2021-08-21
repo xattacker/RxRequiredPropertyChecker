@@ -46,6 +46,6 @@ let checker = RxRequiredPropertyChecker()
 checker.add(textField)
 
 // bind cheker with other
-checker.isFilledBinding.drive(self.button.rx.isEnable)
+checker.rx.isFilled.drive(self.button.rx.isEnable)
 		     .disposed(by: self.disposeBag)
 ``` 
