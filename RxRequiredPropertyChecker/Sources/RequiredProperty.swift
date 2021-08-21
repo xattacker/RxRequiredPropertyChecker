@@ -31,3 +31,12 @@ extension RequiredProperty
         return true
     }
 }
+
+
+extension Array where Element == AnyObject
+{
+    func getRequiredProperties() -> [RequiredProperty]
+    {
+        return self.filter { $0 is RequiredProperty }.map { $0 as! RequiredProperty }
+    }
+}
