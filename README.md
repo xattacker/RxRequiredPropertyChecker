@@ -24,28 +24,28 @@ to your `Package.swift` files `dependencies` array.
 
 ### How to use:
 ``` 
-        // make the component implement protocol RequiredProperty
-        extension UITextField: RequiredProperty
-        {
-            public var isFilled: Bool
-            {
-                return (self.text?.count ?? 0) > 0
-            }
+// make the component implement protocol RequiredProperty
+extension UITextField: RequiredProperty
+{
+    public var isFilled: Bool
+    {
+	return (self.text?.count ?? 0) > 0
+    }
 
-            public var isFilledBinding: Driver<Bool>
-            {
-                return self.rx.text.map { $0?.count ?? 0 > 0 }.asDriver(onErrorJustReturn: false)
-            }
-        }
-	
-        
-        // then add the component instance into RxRequiredPropertyChecker
-        let textField: UITextField
-        
-        let checker = RxRequiredPropertyChecker()
-        checker.add(textField)
-        
-        // bind cheker with other
-        checker.isFilledBinding.drive(self.button.rx.isEnable)
-                             .disposed(by: self.disposeBag)
+    public var isFilledBinding: Driver<Bool>
+    {
+	return self.rx.text.map { $0?.count ?? 0 > 0 }.asDriver(onErrorJustReturn: false)
+    }
+}
+
+
+// then add the component instance into RxRequiredPropertyChecker
+let textField: UITextField
+
+let checker = RxRequiredPropertyChecker()
+checker.add(textField)
+
+// bind cheker with other
+checker.isFilledBinding.drive(self.button.rx.isEnable)
+		     .disposed(by: self.disposeBag)
 ``` 
