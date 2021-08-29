@@ -1,7 +1,9 @@
 # RxRequiredPropertyChecker
 a RxSwift Related component, help checking property has been filled
 
-https://raw.githubusercontent.com/xattacker/RxRequiredPropertyChecker/main/rm_res/sample_video.mp4
+
+https://user-images.githubusercontent.com/33754378/131239984-9138ccfd-5525-4584-8b8c-712079140315.mp4
+
 
 # Installation
 
