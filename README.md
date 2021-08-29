@@ -2,10 +2,8 @@
 a RxSwift Related component, help checking property has been filled
 
 <figure class="video_container">
-	  <iframe src="https://drive.google.com/file/d/0B6m34D8cFdpMZndKTlBRU0tmczg/preview" frameborder="0" allowfullscreen="true"> </iframe>
-   <video width="400" height="320" controls="true">
-	  <source src="rm_res/sample_video.mp4" type="video/mp4">
-   </video>
+<iframe src="https://drive.google.com/file/d/0B6m34D8cFdpMZndKTlBRU0tmczg/preview" frameborder="0" allowfullscreen="true"> </iframe>
+
 </figure>
 
 # Installation
