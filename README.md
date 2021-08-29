@@ -2,7 +2,7 @@
 a RxSwift Related component, help checking property has been filled
 
 <figure class="video_container">
-   <video width="320" height="240" controls="true">
+   <video controls="true">
 	  <source src="rm_res/sample_video.mp4" type="video/mp4">
    </video>
 </figure>
