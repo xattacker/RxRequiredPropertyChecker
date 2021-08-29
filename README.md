@@ -1,10 +1,11 @@
 # RxRequiredPropertyChecker
 a RxSwift Related component, help checking property has been filled
 
-<video width="320" height="240" controls>
-  <source src="rm_res/sample_video.mp4" type="video/mp4">
-</video>
-
+<figure class="video_container">
+   <video width="320" height="240" controls>
+	  <source src="rm_res/sample_video.mp4" type="video/mp4">
+   </video>
+</figure>
 
 # Installation
 
