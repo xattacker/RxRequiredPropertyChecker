@@ -85,6 +85,7 @@ public final class RxRequiredPropertyChecker: ReactiveCompatible
     public func clear()
     {
         self.properties.removeAll()
+        self.isFilledSubject.onNext(self.isFilled)
         self.disposeBag = DisposeBag()
     }
 }
