@@ -40,7 +40,7 @@ public final class RxRequiredPropertyChecker: ReactiveCompatible
     }
     
     private var properties = [RequiredProperty]()
-    private let disposeBag = DisposeBag()
+    private var disposeBag = DisposeBag()
     fileprivate let isFilledSubject = BehaviorSubject(value: false)
     
     public init()
@@ -85,6 +85,7 @@ public final class RxRequiredPropertyChecker: ReactiveCompatible
     public func clear()
     {
         self.properties.removeAll()
+        self.disposeBag = DisposeBag()
     }
 }
 
