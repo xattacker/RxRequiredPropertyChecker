@@ -62,9 +62,9 @@ public final class RxRequiredPropertyChecker: ReactiveCompatible
         }
     }
     
-    public func add(_ array: [RequiredProperty])
+    public func add(_ properties: [RequiredProperty])
     {
-        for p in array
+        for p in properties
         {
             self.add(p)
         }
