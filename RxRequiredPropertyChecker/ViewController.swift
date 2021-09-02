@@ -38,4 +38,9 @@ class ViewController: UIViewController
                              .drive(self.isFilledLabel.rx.textColor)
                              .disposed(by: self.disposeBag)
     }
+    
+    @IBAction func onRemovePropertyAction(_ obj: AnyObject)
+    {
+        _ = self.propertyChecker.remove(self.switchView)
+    }
 }

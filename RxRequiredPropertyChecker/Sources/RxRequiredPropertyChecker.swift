@@ -13,6 +13,12 @@ import RxCocoa
 
 public final class RxRequiredPropertyChecker: ReactiveCompatible
 {
+    private struct WeakPropertyBox
+    {
+        fileprivate weak var property: RequiredProperty!
+        fileprivate let disposable: Disposable
+    }
+
     public var count: Int
     {
         return self.properties.count
@@ -26,7 +32,7 @@ public final class RxRequiredPropertyChecker: ReactiveCompatible
     public var isFilled: Bool
     {
         if !self.properties.isEmpty,
-           let _ = self.properties.first(where: { $0.isRequired && !$0.isFilled })
+           let _ = self.properties.first(where: { $0.property.isRequired && !$0.property.isFilled })
         {
             return false
         }
@@ -36,11 +42,10 @@ public final class RxRequiredPropertyChecker: ReactiveCompatible
     
     public var nofilledNames: [String]
     {
-        return self.properties.filter { !$0.isFilled }.map { $0.name }
+        return self.properties.filter { !$0.property.isFilled }.map { $0.property.name }
     }
     
-    private var properties = [RequiredProperty]()
-    private var disposeBag = DisposeBag()
+    private var properties = [WeakPropertyBox]()
     fileprivate let isFilledSubject = BehaviorSubject(value: true)
     
     public init()
@@ -51,14 +56,7 @@ public final class RxRequiredPropertyChecker: ReactiveCompatible
     {
         for p in properties
         {
-            self.properties.append(p)
-            
-            p.isFilledBinding.drive(
-                                onNext: {
-                                    [weak self]
-                                    (filled: Bool) in
-                                    self?.isFilledSubject.onNext(self?.isFilled ?? false)
-                                }).disposed(by: self.disposeBag)
+            self.driveProperty(p)
         }
     }
     
@@ -66,22 +64,45 @@ public final class RxRequiredPropertyChecker: ReactiveCompatible
     {
         for p in properties
         {
-            self.add(p)
+            self.driveProperty(p)
         }
     }
     
-    public func remove(_ property: RequiredProperty) -> Bool
+    public func remove(_ properties: RequiredProperty...) -> Bool
     {
         var result = false
-        if let index = self.properties.firstIndex(where:{ $0 === property })
+        
+        for p in properties
         {
-            self.properties.remove(at: index)
-            result = true
+            if self.removeProperty(p)
+            {
+                result = true
+            }
         }
         
         if result
         {
-             self.isFilledSubject.onNext(self.isFilled)
+            self.isFilledSubject.onNext(self.isFilled)
+        }
+        
+        return result
+    }
+    
+    public func remove(_ properties: [RequiredProperty]) -> Bool
+    {
+        var result = false
+        
+        for p in properties
+        {
+            if self.removeProperty(p)
+            {
+                result = true
+            }
+        }
+        
+        if result
+        {
+            self.isFilledSubject.onNext(self.isFilled)
         }
         
         return result
@@ -91,7 +112,33 @@ public final class RxRequiredPropertyChecker: ReactiveCompatible
     {
         self.properties.removeAll()
         self.isFilledSubject.onNext(self.isFilled)
-        self.disposeBag = DisposeBag()
+    }
+    
+    private func driveProperty(_ property: RequiredProperty)
+    {
+        let disposable = property.isFilledBinding.drive(
+                            onNext: {
+                                [weak self]
+                                (filled: Bool) in
+                                self?.isFilledSubject.onNext(self?.isFilled ?? false)
+                            })
+        
+        self.properties.append(WeakPropertyBox(property: property, disposable: disposable))
+    }
+    
+    private func removeProperty(_ property: RequiredProperty) -> Bool
+    {
+        var result = false
+        
+        if let index = self.properties.firstIndex(where:{ $0.property === property })
+        {
+            let existed = self.properties[index]
+            existed.disposable.dispose()
+            self.properties.remove(at: index)
+            result = true
+        }
+        
+        return result
     }
 }
 
