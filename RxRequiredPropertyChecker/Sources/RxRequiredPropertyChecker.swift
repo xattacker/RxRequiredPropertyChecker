@@ -79,6 +79,11 @@ public final class RxRequiredPropertyChecker: ReactiveCompatible
             result = true
         }
         
+        if result
+        {
+             self.isFilledSubject.onNext(self.isFilled)
+        }
+        
         return result
     }
     
