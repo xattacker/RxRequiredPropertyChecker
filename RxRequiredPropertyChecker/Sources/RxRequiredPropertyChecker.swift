@@ -75,7 +75,7 @@ public final class RxRequiredPropertyChecker: ReactiveCompatible
         
         for p in properties
         {
-            if self.removeProperty(p)
+            if self.disposeProperty(p)
             {
                 result = true
             }
@@ -95,7 +95,7 @@ public final class RxRequiredPropertyChecker: ReactiveCompatible
         
         for p in properties
         {
-            if self.removeProperty(p)
+            if self.disposeProperty(p)
             {
                 result = true
             }
@@ -133,7 +133,7 @@ extension RxRequiredPropertyChecker
         self.properties.append(WeakPropertyBox(property: property, disposable: disposable))
     }
     
-    private func removeProperty(_ property: RequiredProperty) -> Bool
+    private func disposeProperty(_ property: RequiredProperty) -> Bool
     {
         var result = false
         
