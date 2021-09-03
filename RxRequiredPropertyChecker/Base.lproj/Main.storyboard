@@ -56,6 +56,13 @@
                                     <action selector="onRemovePropertyAction:" destination="BYZ-38-t0r" eventType="touchUpInside" id="HBW-aC-3px"/>
                                 </connections>
                             </button>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="6lJ-yc-GcY">
+                                <rect key="frame" x="20" y="307" width="335" height="30"/>
+                                <state key="normal" title="Clear"/>
+                                <connections>
+                                    <action selector="onClearPropertyAction:" destination="BYZ-38-t0r" eventType="touchUpInside" id="xCa-ot-cIk"/>
+                                </connections>
+                            </button>
                         </subviews>
                         <viewLayoutGuide key="safeArea" id="6Tk-OE-BBY"/>
                         <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
@@ -65,6 +72,8 @@
                             <constraint firstItem="FzQ-Ak-IbT" firstAttribute="leading" secondItem="GLq-Dd-dGu" secondAttribute="leading" id="79E-aS-AxS"/>
                             <constraint firstItem="GLq-Dd-dGu" firstAttribute="leading" secondItem="d9M-lJ-dXm" secondAttribute="leading" id="7h2-8m-tp5"/>
                             <constraint firstItem="GLq-Dd-dGu" firstAttribute="top" secondItem="d9M-lJ-dXm" secondAttribute="bottom" constant="20" id="8hS-lN-27e"/>
+                            <constraint firstItem="6lJ-yc-GcY" firstAttribute="leading" secondItem="6Tk-OE-BBY" secondAttribute="leading" constant="20" id="8vF-m0-3zx"/>
+                            <constraint firstItem="6lJ-yc-GcY" firstAttribute="top" secondItem="8Oe-6j-pYN" secondAttribute="bottom" constant="20" id="CAn-UA-ZLn"/>
                             <constraint firstItem="d9M-lJ-dXm" firstAttribute="top" secondItem="6Tk-OE-BBY" secondAttribute="top" constant="20" id="CFY-h5-UXB"/>
                             <constraint firstItem="6Tk-OE-BBY" firstAttribute="trailing" secondItem="d9M-lJ-dXm" secondAttribute="trailing" constant="20" id="DSS-qA-3HS"/>
                             <constraint firstItem="8Oe-6j-pYN" firstAttribute="trailing" secondItem="d9M-lJ-dXm" secondAttribute="trailing" id="HfN-ga-cyO"/>
@@ -72,6 +81,7 @@
                             <constraint firstItem="7k3-Xc-Oe5" firstAttribute="leading" secondItem="FzQ-Ak-IbT" secondAttribute="leading" id="NHb-FP-MRe"/>
                             <constraint firstItem="FzQ-Ak-IbT" firstAttribute="top" secondItem="GLq-Dd-dGu" secondAttribute="bottom" constant="20" id="VcJ-k1-bOQ"/>
                             <constraint firstItem="PS4-O2-Aq4" firstAttribute="leading" secondItem="FzQ-Ak-IbT" secondAttribute="trailing" constant="20" id="flT-hm-48i"/>
+                            <constraint firstItem="6Tk-OE-BBY" firstAttribute="trailing" secondItem="6lJ-yc-GcY" secondAttribute="trailing" constant="20" id="mH2-Bg-d6l"/>
                             <constraint firstItem="8Oe-6j-pYN" firstAttribute="leading" secondItem="d9M-lJ-dXm" secondAttribute="leading" id="pL5-5t-Dfp"/>
                             <constraint firstItem="PS4-O2-Aq4" firstAttribute="centerY" secondItem="FzQ-Ak-IbT" secondAttribute="centerY" id="qpI-jF-8er"/>
                             <constraint firstItem="8Oe-6j-pYN" firstAttribute="top" secondItem="7k3-Xc-Oe5" secondAttribute="bottom" constant="30" id="u0M-99-ATM"/>
@@ -79,6 +89,7 @@
                             <constraint firstItem="GLq-Dd-dGu" firstAttribute="trailing" secondItem="d9M-lJ-dXm" secondAttribute="trailing" id="xNZ-TJ-uNp"/>
                         </constraints>
                     </view>
+                    <navigationItem key="navigationItem" id="7vt-dH-8jS"/>
                     <connections>
                         <outlet property="isFilledLabel" destination="8Oe-6j-pYN" id="9nZ-YS-X1b"/>
                         <outlet property="segmentCtrl" destination="7k3-Xc-Oe5" id="fyI-F1-MFG"/>
@@ -89,7 +100,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="dkx-z0-nzr" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="120.8" y="95.802098950524751"/>
+            <point key="canvasLocation" x="1060" y="95.802098950524751"/>
         </scene>
     </scenes>
     <resources>

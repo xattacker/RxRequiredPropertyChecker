@@ -43,4 +43,9 @@ class ViewController: UIViewController
     {
         _ = self.propertyChecker.remove(self.switchView)
     }
+    
+    @IBAction func onClearPropertyAction(_ obj: AnyObject)
+    {
+        self.propertyChecker.clear()
+    }
 }

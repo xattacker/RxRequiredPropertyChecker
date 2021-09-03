@@ -32,7 +32,7 @@ public final class RxRequiredPropertyChecker: ReactiveCompatible
     public var isFilled: Bool
     {
         if !self.properties.isEmpty,
-           let _ = self.properties.first(where: { $0.property.isRequired && !$0.property.isFilled })
+           let _ = self.properties.first(where: { $0.property != nil && $0.property.isRequired && !$0.property.isFilled })
         {
             return false
         }
@@ -46,6 +46,7 @@ public final class RxRequiredPropertyChecker: ReactiveCompatible
     }
     
     private var properties = [WeakPropertyBox]()
+    private var disposeBag = DisposeBag()
     fileprivate let isFilledSubject = BehaviorSubject(value: true)
     
     public init()
@@ -111,9 +112,14 @@ public final class RxRequiredPropertyChecker: ReactiveCompatible
     public func clear()
     {
         self.properties.removeAll()
+        self.disposeBag = DisposeBag()
         self.isFilledSubject.onNext(self.isFilled)
     }
-    
+}
+
+
+extension RxRequiredPropertyChecker
+{
     private func driveProperty(_ property: RequiredProperty)
     {
         let disposable = property.isFilledBinding.drive(
@@ -122,6 +128,7 @@ public final class RxRequiredPropertyChecker: ReactiveCompatible
                                 (filled: Bool) in
                                 self?.isFilledSubject.onNext(self?.isFilled ?? false)
                             })
+        disposable.disposed(by: self.disposeBag)
         
         self.properties.append(WeakPropertyBox(property: property, disposable: disposable))
     }
