@@ -40,7 +40,7 @@ public final class RxRequiredPropertyChecker: ReactiveCompatible
         return true
     }
     
-    public var nofilledNames: [String]
+    public var nonFilledNames: [String]
     {
         return self.properties.filter { !$0.property.isFilled }.map { $0.property.name }
     }
