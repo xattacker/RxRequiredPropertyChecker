@@ -13,7 +13,7 @@ import RxCocoa
 
 public protocol RequiredProperty: AnyObject
 {
-    var name: String { get }
+    var propertyName: String { get }
     var isFilled: Bool { get }
     var isFilledBinding: Driver<Bool> { get }
     var isRequired: Bool { get }
@@ -21,7 +21,7 @@ public protocol RequiredProperty: AnyObject
 
 extension RequiredProperty
 {
-    public var name: String
+    public var propertyName: String
     {
         return ""
     }
