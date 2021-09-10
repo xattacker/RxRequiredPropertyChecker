@@ -19,7 +19,7 @@ pod 'RxRequiredPropertyChecker'
 To add RxRequiredPropertyChecker to a [Swift Package Manager](https://swift.org/package-manager/) based project, add:
 
 ```swift
-.package(url: "https://github.com/xattacker/RxRequiredPropertyChecker.git", .upToNextMajor(from: "1.0.8")),
+.package(url: "https://github.com/xattacker/RxRequiredPropertyChecker.git", .upToNextMajor(from: "1.0.9")),
 .package(url: "https://github.com/ReactiveX/RxSwift.git", .upToNextMajor(from: "6.2.0")),
 ```
 to your `Package.swift` files `dependencies` array.
