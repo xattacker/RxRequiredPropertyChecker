@@ -13,10 +13,15 @@ import RxCocoa
 
 public final class RxRequiredPropertyChecker: ReactiveCompatible
 {
-    private struct WeakPropertyBox
+    private class WeakPropertyBox
     {
         fileprivate weak var property: RequiredProperty!
-        fileprivate let disposable: Disposable
+        fileprivate var disposable: Disposable?
+        
+        init(property: RequiredProperty)
+        {
+            self.property = property
+        }
     }
 
     public var count: Int
@@ -122,6 +127,9 @@ extension RxRequiredPropertyChecker
 {
     private func driveProperty(_ property: RequiredProperty)
     {
+        let box = WeakPropertyBox(property: property)
+        self.properties.append(box)
+        
         let disposable = property.isFilledBinding.drive(
                             onNext: {
                                 [weak self]
@@ -130,7 +138,7 @@ extension RxRequiredPropertyChecker
                             })
         disposable.disposed(by: self.disposeBag)
         
-        self.properties.append(WeakPropertyBox(property: property, disposable: disposable))
+        box.disposable = disposable
     }
     
     private func disposeProperty(_ property: RequiredProperty) -> Bool
@@ -140,7 +148,7 @@ extension RxRequiredPropertyChecker
         if let index = self.properties.firstIndex(where:{ $0.property === property })
         {
             let existed = self.properties[index]
-            existed.disposable.dispose()
+            existed.disposable?.dispose()
             self.properties.remove(at: index)
             result = true
         }
