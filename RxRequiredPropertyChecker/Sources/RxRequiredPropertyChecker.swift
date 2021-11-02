@@ -47,7 +47,7 @@ public final class RxRequiredPropertyChecker: ReactiveCompatible
     
     public var nonFilledPropertyNames: [String]
     {
-        return self.properties.filter { !$0.property.isFilled }.map { $0.property.propertyName }
+        return self.properties.filter { $0.property.isRequired && !$0.property.isFilled }.map { $0.property.propertyName }
     }
     
     private var properties = [WeakPropertyBox]()
