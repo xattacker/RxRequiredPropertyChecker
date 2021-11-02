@@ -29,6 +29,11 @@ public final class RxRequiredPropertyChecker: ReactiveCompatible
         return self.properties.count
     }
     
+    public subscript(index: Int) -> RequiredProperty?
+    {
+        return self.properties[index].property
+    }
+    
     public var isEmpty: Bool
     {
         return self.properties.isEmpty
@@ -119,6 +124,33 @@ public final class RxRequiredPropertyChecker: ReactiveCompatible
         self.properties.removeAll()
         self.disposeBag = DisposeBag()
         self.isFilledSubject.onNext(self.isFilled)
+    }
+    
+    public func fetch(_ fetch: (_ proerty: RequiredProperty) -> Void)
+    {
+        var deinited = [Int]()
+        
+        for (i, p) in self.properties.enumerated()
+        {
+            if let property = p.property
+            {
+                fetch(property)
+            }
+            else
+            {
+                deinited.append(i)
+            }
+        }
+        
+        if !deinited.isEmpty
+        {
+            deinited.reverse() // remove index from large to small
+            deinited.forEach {
+                [weak self]
+                i in
+                self?.properties.remove(at: i)
+            }
+        }
     }
 }
 
