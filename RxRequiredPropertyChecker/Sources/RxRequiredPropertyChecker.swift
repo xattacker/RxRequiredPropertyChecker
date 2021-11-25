@@ -11,6 +11,17 @@ import RxSwift
 import RxCocoa
 
 
+// 填滿條件判斷定義
+public enum RequiredPropertyCheckMode
+{
+    /// 全都要填
+    case all
+    
+    /// 只要有一個有填
+    case contained
+}
+
+
 public final class RxRequiredPropertyChecker: ReactiveCompatible
 {
     private class WeakPropertyBox
@@ -23,6 +34,7 @@ public final class RxRequiredPropertyChecker: ReactiveCompatible
             self.property = property
         }
     }
+    
 
     public var count: Int
     {
@@ -34,6 +46,8 @@ public final class RxRequiredPropertyChecker: ReactiveCompatible
         return self.properties[index].property
     }
     
+    public var checkMode: RequiredPropertyCheckMode
+    
     public var isEmpty: Bool
     {
         return self.properties.isEmpty
@@ -41,10 +55,22 @@ public final class RxRequiredPropertyChecker: ReactiveCompatible
     
     public var isFilled: Bool
     {
-        if !self.properties.isEmpty,
-           let _ = self.properties.first(where: { $0.property != nil && $0.property.isRequired && !$0.property.isFilled })
+        if !self.properties.isEmpty
         {
-            return false
+            switch self.checkMode
+            {
+                case .all:
+                    if let _ = self.properties.first(where: { $0.property != nil && $0.property.isRequired && !$0.property.isFilled })
+                    {
+                        return false
+                    }
+                    break
+                
+                case .contained:
+                    return self.properties.first(where: { $0.property != nil && $0.property.isRequired && $0.property.isFilled }) != nil
+            }
+            
+            return true
         }
         
         return true
@@ -52,17 +78,19 @@ public final class RxRequiredPropertyChecker: ReactiveCompatible
     
     public var nonFilledPropertyNames: [String]
     {
-        return self.properties.filter { $0.property.isRequired && !$0.property.isFilled }.map { $0.property.propertyName }
+        return self.properties.filter { $0.property.isRequired && !$0.property.isFilled }
+                              .map { $0.property.propertyName }
     }
     
     private var properties = [WeakPropertyBox]()
     private var disposeBag = DisposeBag()
     fileprivate let isFilledSubject = BehaviorSubject(value: true)
     
-    public init()
+    public init(checkMode: RequiredPropertyCheckMode = .all)
     {
+        self.checkMode = checkMode
     }
-    
+
     public func add(_ properties: RequiredProperty...)
     {
         for p in properties
