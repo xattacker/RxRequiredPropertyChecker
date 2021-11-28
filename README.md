@@ -50,5 +50,5 @@ checker.add(textField)
 
 // bind checker with other
 checker.rx.isFilled.drive(self.button.rx.isEnable)
-		     .disposed(by: self.disposeBag)
+		   .disposed(by: self.disposeBag)
 ``` 
