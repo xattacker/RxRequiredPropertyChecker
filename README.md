@@ -27,6 +27,8 @@ to your `Package.swift` files `dependencies` array.
 
 ### How to use:
 ``` 
+import RxRequiredPropertyChecker
+
 // make the component implement protocol RequiredProperty
 extension UITextField: RequiredProperty
 {
