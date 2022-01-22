@@ -154,7 +154,7 @@ public final class RxRequiredPropertyChecker: ReactiveCompatible
         self.isFilledSubject.onNext(self.isFilled)
     }
     
-    public func fetch(_ fetch: (_ proerty: RequiredProperty) -> Void)
+    public func fetch(_ each: (_ proerty: RequiredProperty) -> Void)
     {
         var deinited = [Int]()
         
@@ -162,7 +162,7 @@ public final class RxRequiredPropertyChecker: ReactiveCompatible
         {
             if let property = p.property
             {
-                fetch(property)
+                each(property)
             }
             else
             {
