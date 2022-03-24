@@ -154,6 +154,11 @@ public final class RxRequiredPropertyChecker: ReactiveCompatible
         self.isFilledSubject.onNext(self.isFilled)
     }
     
+    public func check()
+    {
+        self.isFilledSubject.onNext(self.isFilled)
+    }
+    
     public func fetch(_ each: (_ proerty: RequiredProperty) -> Void)
     {
         var deinited = [Int]()

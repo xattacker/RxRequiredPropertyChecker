@@ -41,7 +41,7 @@ extension UITextView: RequiredProperty
 
 extension UISwitch: RequiredProperty
 {
-    public var name: String
+    public var propertyName: String
     {
         if #available(iOS 14, *)
         {

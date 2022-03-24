@@ -12,11 +12,11 @@
 		65A7E9A42038882C001CB20A /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 65A7E9A22038882C001CB20A /* Main.storyboard */; };
 		65A7E9A62038882C001CB20A /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 65A7E9A52038882C001CB20A /* Assets.xcassets */; };
 		65A7E9A92038882C001CB20A /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 65A7E9A72038882C001CB20A /* LaunchScreen.storyboard */; };
-		65E55A8026D00A1900438949 /* RxCocoa in Frameworks */ = {isa = PBXBuildFile; productRef = 65E55A7F26D00A1900438949 /* RxCocoa */; };
-		65E55A8226D00A1900438949 /* RxSwift in Frameworks */ = {isa = PBXBuildFile; productRef = 65E55A8126D00A1900438949 /* RxSwift */; };
 		65E55A8426D00A3D00438949 /* RxRequiredPropertyChecker.swift in Sources */ = {isa = PBXBuildFile; fileRef = 65E55A8326D00A3D00438949 /* RxRequiredPropertyChecker.swift */; };
 		65E55A8626D0102100438949 /* RequiredProperty.swift in Sources */ = {isa = PBXBuildFile; fileRef = 65E55A8526D0102100438949 /* RequiredProperty.swift */; };
 		65E55A8826D019CC00438949 /* UIKit+RequiredProperty.swift in Sources */ = {isa = PBXBuildFile; fileRef = 65E55A8726D019CC00438949 /* UIKit+RequiredProperty.swift */; };
+		C580D67327EC5D4C00126854 /* RxCocoa in Frameworks */ = {isa = PBXBuildFile; productRef = C580D67227EC5D4C00126854 /* RxCocoa */; };
+		C580D67527EC5D4C00126854 /* RxSwift in Frameworks */ = {isa = PBXBuildFile; productRef = C580D67427EC5D4C00126854 /* RxSwift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -37,8 +37,8 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				65E55A8226D00A1900438949 /* RxSwift in Frameworks */,
-				65E55A8026D00A1900438949 /* RxCocoa in Frameworks */,
+				C580D67527EC5D4C00126854 /* RxSwift in Frameworks */,
+				C580D67327EC5D4C00126854 /* RxCocoa in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -102,8 +102,8 @@
 			);
 			name = RxRequiredPropertyChecker;
 			packageProductDependencies = (
-				65E55A7F26D00A1900438949 /* RxCocoa */,
-				65E55A8126D00A1900438949 /* RxSwift */,
+				C580D67227EC5D4C00126854 /* RxCocoa */,
+				C580D67427EC5D4C00126854 /* RxSwift */,
 			);
 			productName = RadarView;
 			productReference = 65A7E99B2038882C001CB20A /* RxRequiredPropertyChecker.app */;
@@ -136,7 +136,7 @@
 			);
 			mainGroup = 65A7E9922038882C001CB20A;
 			packageReferences = (
-				65E55A7E26D00A1900438949 /* XCRemoteSwiftPackageReference "RxSwift" */,
+				C580D67127EC5D4C00126854 /* XCRemoteSwiftPackageReference "RxSwift" */,
 			);
 			productRefGroup = 65A7E99C2038882C001CB20A /* Products */;
 			projectDirPath = "";
@@ -316,7 +316,7 @@
 					"$(inherited)",
 					"@executable_path/Frameworks",
 				);
-				MARKETING_VERSION = 1.0.11;
+				MARKETING_VERSION = 1.0.12;
 				PRODUCT_BUNDLE_IDENTIFIER = com.xattacker.RxRequiredPropertyChecker;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_VERSION = 5.0;
@@ -335,7 +335,7 @@
 					"$(inherited)",
 					"@executable_path/Frameworks",
 				);
-				MARKETING_VERSION = 1.0.11;
+				MARKETING_VERSION = 1.0.12;
 				PRODUCT_BUNDLE_IDENTIFIER = com.xattacker.RxRequiredPropertyChecker;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_VERSION = 5.0;
@@ -367,25 +367,25 @@
 /* End XCConfigurationList section */
 
 /* Begin XCRemoteSwiftPackageReference section */
-		65E55A7E26D00A1900438949 /* XCRemoteSwiftPackageReference "RxSwift" */ = {
+		C580D67127EC5D4C00126854 /* XCRemoteSwiftPackageReference "RxSwift" */ = {
 			isa = XCRemoteSwiftPackageReference;
 			repositoryURL = "https://github.com/ReactiveX/RxSwift.git";
 			requirement = {
 				kind = upToNextMajorVersion;
-				minimumVersion = 6.2.0;
+				minimumVersion = 6.0.0;
 			};
 		};
 /* End XCRemoteSwiftPackageReference section */
 
 /* Begin XCSwiftPackageProductDependency section */
-		65E55A7F26D00A1900438949 /* RxCocoa */ = {
+		C580D67227EC5D4C00126854 /* RxCocoa */ = {
 			isa = XCSwiftPackageProductDependency;
-			package = 65E55A7E26D00A1900438949 /* XCRemoteSwiftPackageReference "RxSwift" */;
+			package = C580D67127EC5D4C00126854 /* XCRemoteSwiftPackageReference "RxSwift" */;
 			productName = RxCocoa;
 		};
-		65E55A8126D00A1900438949 /* RxSwift */ = {
+		C580D67427EC5D4C00126854 /* RxSwift */ = {
 			isa = XCSwiftPackageProductDependency;
-			package = 65E55A7E26D00A1900438949 /* XCRemoteSwiftPackageReference "RxSwift" */;
+			package = C580D67127EC5D4C00126854 /* XCRemoteSwiftPackageReference "RxSwift" */;
 			productName = RxSwift;
 		};
 /* End XCSwiftPackageProductDependency section */
