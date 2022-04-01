@@ -20,6 +20,10 @@ extension UITextField: RequiredProperty
     
     public var isFilledBinding: Driver<Bool>
     {
+//        // KVO with text would not effect on key in event directly
+//        return self.rx.observe(String.self, "text")
+//               .compactMap({ $0?.count ?? 0 > 0 })
+//               .asDriver(onErrorJustReturn: false)
         return self.rx.text.map { $0?.count ?? 0 > 0 }.asDriver(onErrorJustReturn: false)
     }
 }
