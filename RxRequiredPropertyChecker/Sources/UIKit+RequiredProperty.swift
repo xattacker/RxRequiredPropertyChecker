@@ -20,7 +20,7 @@ extension UITextField: RequiredProperty
     
     public var isFilledBinding: Driver<Bool>
     {
-//        // KVO with text would not effect on key in event directly
+        // KVO with text would not effect on key in event directly
         let kvo_observable = self.rx.observe(String.self, "text")
                              .compactMap({ $0?.count ?? 0 > 0 })
         
