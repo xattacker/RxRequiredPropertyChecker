@@ -24,6 +24,7 @@ extension UITextField: RequiredProperty
         let kvo_observable = self.rx.observe(String.self, "text")
                              .compactMap({ $0?.count ?? 0 > 0 })
         
+        // it will not catch the event when text setting by code
         let event_observable = self.rx.text.map { $0?.count ?? 0 > 0 }
         
         return Observable.of(kvo_observable, event_observable)

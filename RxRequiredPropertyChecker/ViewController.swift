@@ -41,7 +41,7 @@ class ViewController: UIViewController
     
     @IBAction func onTextFiledAction(_ obj: AnyObject)
     {
-        // test set text into TextFiled by code
+        // test TextFiled text setting by code
         self.textFiled.text = "aaaaa"
     }
     
