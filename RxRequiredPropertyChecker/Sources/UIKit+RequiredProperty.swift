@@ -21,10 +21,14 @@ extension UITextField: RequiredProperty
     public var isFilledBinding: Driver<Bool>
     {
 //        // KVO with text would not effect on key in event directly
-//        return self.rx.observe(String.self, "text")
-//               .compactMap({ $0?.count ?? 0 > 0 })
-//               .asDriver(onErrorJustReturn: false)
-        return self.rx.text.map { $0?.count ?? 0 > 0 }.asDriver(onErrorJustReturn: false)
+        let kvo_observable = self.rx.observe(String.self, "text")
+                             .compactMap({ $0?.count ?? 0 > 0 })
+        
+        let event_observable = self.rx.text.map { $0?.count ?? 0 > 0 }
+        
+        return Observable.of(kvo_observable, event_observable)
+                  .merge()
+                  .asDriver(onErrorJustReturn: false)
     }
 }
 

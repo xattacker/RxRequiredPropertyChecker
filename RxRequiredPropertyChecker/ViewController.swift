@@ -39,6 +39,12 @@ class ViewController: UIViewController
                              .disposed(by: self.disposeBag)
     }
     
+    @IBAction func onTextFiledAction(_ obj: AnyObject)
+    {
+        // test set text into TextFiled by code
+        self.textFiled.text = "aaaaa"
+    }
+    
     @IBAction func onRemovePropertyAction(_ obj: AnyObject)
     {
         _ = self.propertyChecker.remove(self.switchView)
