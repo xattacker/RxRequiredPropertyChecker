@@ -45,6 +45,12 @@ class ViewController: UIViewController
         self.textFiled.text = "aaaaa"
     }
     
+    @IBAction func onTextViewAction(_ obj: AnyObject)
+    {
+        // test TextView text setting by code
+        self.textView.text = "bbbbb"
+    }
+    
     @IBAction func onRemovePropertyAction(_ obj: AnyObject)
     {
         _ = self.propertyChecker.remove(self.switchView)

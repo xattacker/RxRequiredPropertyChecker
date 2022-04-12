@@ -23,7 +23,7 @@
                                 <textInputTraits key="textInputTraits"/>
                             </textField>
                             <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" textAlignment="natural" translatesAutoresizingMaskIntoConstraints="NO" id="GLq-Dd-dGu">
-                                <rect key="frame" x="20" y="74" width="335" height="60"/>
+                                <rect key="frame" x="20" y="74" width="255.5" height="60"/>
                                 <color key="backgroundColor" systemColor="systemGray6Color"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="60" id="aDM-4D-1ET"/>
@@ -71,6 +71,14 @@
                                     <action selector="onTextFiledAction:" destination="BYZ-38-t0r" eventType="touchUpInside" id="jzg-fg-mdA"/>
                                 </connections>
                             </button>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="J7a-XF-RZS">
+                                <rect key="frame" x="285.5" y="74" width="69.5" height="31"/>
+                                <state key="normal" title="Button"/>
+                                <buttonConfiguration key="configuration" style="plain" title="FillText"/>
+                                <connections>
+                                    <action selector="onTextViewAction:" destination="BYZ-38-t0r" eventType="touchUpInside" id="RCV-XO-xHa"/>
+                                </connections>
+                            </button>
                         </subviews>
                         <viewLayoutGuide key="safeArea" id="6Tk-OE-BBY"/>
                         <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
@@ -85,11 +93,13 @@
                             <constraint firstItem="6lJ-yc-GcY" firstAttribute="top" secondItem="8Oe-6j-pYN" secondAttribute="bottom" constant="20" id="CAn-UA-ZLn"/>
                             <constraint firstItem="d9M-lJ-dXm" firstAttribute="top" secondItem="6Tk-OE-BBY" secondAttribute="top" constant="20" id="CFY-h5-UXB"/>
                             <constraint firstItem="DcA-mu-efn" firstAttribute="top" secondItem="6Tk-OE-BBY" secondAttribute="top" constant="20" id="Cq3-Yh-YpY"/>
-                            <constraint firstItem="6Tk-OE-BBY" firstAttribute="trailing" secondItem="GLq-Dd-dGu" secondAttribute="trailing" constant="20" id="Giq-lx-684"/>
+                            <constraint firstItem="6Tk-OE-BBY" firstAttribute="trailing" secondItem="J7a-XF-RZS" secondAttribute="trailing" constant="20" id="DXx-bv-yi1"/>
                             <constraint firstItem="8Oe-6j-pYN" firstAttribute="trailing" secondItem="d9M-lJ-dXm" secondAttribute="trailing" id="HfN-ga-cyO"/>
                             <constraint firstItem="7k3-Xc-Oe5" firstAttribute="width" secondItem="8bC-Xf-vdC" secondAttribute="width" multiplier="0.5" id="MLf-2Y-u08"/>
                             <constraint firstItem="7k3-Xc-Oe5" firstAttribute="leading" secondItem="FzQ-Ak-IbT" secondAttribute="leading" id="NHb-FP-MRe"/>
                             <constraint firstItem="FzQ-Ak-IbT" firstAttribute="top" secondItem="GLq-Dd-dGu" secondAttribute="bottom" constant="20" id="VcJ-k1-bOQ"/>
+                            <constraint firstItem="J7a-XF-RZS" firstAttribute="leading" secondItem="GLq-Dd-dGu" secondAttribute="trailing" constant="10" id="ZYy-h3-nv8"/>
+                            <constraint firstItem="J7a-XF-RZS" firstAttribute="top" secondItem="GLq-Dd-dGu" secondAttribute="top" id="f2p-cu-NU9"/>
                             <constraint firstItem="PS4-O2-Aq4" firstAttribute="leading" secondItem="FzQ-Ak-IbT" secondAttribute="trailing" constant="20" id="flT-hm-48i"/>
                             <constraint firstItem="6Tk-OE-BBY" firstAttribute="trailing" secondItem="DcA-mu-efn" secondAttribute="trailing" constant="20" id="mDs-LU-4qR"/>
                             <constraint firstItem="6Tk-OE-BBY" firstAttribute="trailing" secondItem="6lJ-yc-GcY" secondAttribute="trailing" constant="20" id="mH2-Bg-d6l"/>
