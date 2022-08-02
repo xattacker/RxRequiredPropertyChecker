@@ -6,7 +6,7 @@
 //  Copyright © 2021 xattacker. All rights reserved.
 //
 
-import UIKit
+import Foundation
 import RxSwift
 import RxCocoa
 
