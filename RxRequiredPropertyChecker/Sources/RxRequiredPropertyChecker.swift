@@ -17,8 +17,8 @@ public enum RequiredPropertyCheckMode
     /// 全都要填
     case all
     
-    /// 只要有一個有填
-    case contained
+    /// 只要有一定數量有填
+    case contained(count: Int)
 }
 
 
@@ -66,8 +66,9 @@ public final class RxRequiredPropertyChecker: ReactiveCompatible
                     }
                     break
                 
-                case .contained:
-                    return self.properties.first(where: { $0.property != nil && $0.property.isRequired && $0.property.isFilled }) != nil
+                case .contained(let count):
+                    let filled = self.properties.filter { $0.property != nil && $0.property.isRequired && $0.property.isFilled }
+                    return filled.count >= count
             }
             
             return true
