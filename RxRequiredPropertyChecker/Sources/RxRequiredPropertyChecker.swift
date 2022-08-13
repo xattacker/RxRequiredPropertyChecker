@@ -68,7 +68,7 @@ public final class RxRequiredPropertyChecker: ReactiveCompatible
                 
                 case .contained(let count):
                     let filled = self.properties.filter { $0.property != nil && $0.property.isRequired && $0.property.isFilled }
-                    return filled.count >= (self.properties > count ? count : self.properties)
+                    return filled.count >= (self.properties.count > count ? count : self.properties.count)
             }
             
             return true
