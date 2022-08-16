@@ -48,7 +48,7 @@ extension UITextField: RequiredProperty
 }
 
 
-// then add the component instance into RxRequiredPropertyChecker
+// then add the RequiredProperty instance into RxRequiredPropertyChecker
 let textField: UITextField
 
 let checker = RxRequiredPropertyChecker()
